@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/email"
+                    android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
@@ -65,23 +65,23 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/SignIn_button"
+                android:id="@+id/btn_login"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/action_sign_in_short"
+                android:width="20dp"
+                android:text="login"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/register_button"
+                android:id="@+id/btn_register"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="REGISTER"
+                android:text="register"
                 android:textStyle="bold" />
-
 
         </LinearLayout>
     </ScrollView>
