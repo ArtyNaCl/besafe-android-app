@@ -271,7 +271,7 @@ public class MainActivity extends AppCompatActivity
         String trueUrl ="http://hdaroit.fr:3000/api/appusers/"+getUserId()+"/alerts?access_token="+getToken();
 
         // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, trueUrl,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, trueUrl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
