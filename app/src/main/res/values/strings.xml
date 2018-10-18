@@ -25,4 +25,5 @@
     <string name="x_personnes_viennent_votre_secours">X personnes viennent à votre secours !</string>
     <string name="alerte_envoy_e">Alerte envoyée !</string>
     <string name="tout_va_bien">Tout va bien</string>
+    <string name="register">REGISTER</string>
 </resources>
