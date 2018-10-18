@@ -40,14 +40,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="268dp" />
+        tools:layout_editor_absoluteY="268dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/finish_alert_button"
-        android:layout_width="104dp"
-        android:layout_height="53dp"
-        android:text="FINI"
-        tools:layout_editor_absoluteX="140dp"
-        tools:layout_editor_absoluteY="410dp" />
+        android:layout_width="119dp"
+        android:layout_height="70dp"
+        android:text="Tout va bien"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="413dp"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>
