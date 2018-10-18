@@ -10,7 +10,6 @@
         android:id="@+id/labelfor_alert"
         android:layout_width="162dp"
         android:layout_height="35dp"
-        android:text="Alerte envoyée !"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -18,9 +17,6 @@
         android:text="@string/alerte_envoy_e"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="111dp"
-        tools:layout_editor_absoluteY="77dp"
-        tools:ignore="MissingConstraints" />
         app:layout_constraintBottom_toTopOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,8 +34,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="182dp"
-        tools:ignore="MissingConstraints" />
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.307" />
 
