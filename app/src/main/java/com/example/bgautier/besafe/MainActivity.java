@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        new GeolocListener(this, "5bc8920345ce0c25bf335c5b", "A4VXwF5c8egUpYWUEskmNlHGutcWMvKZpMe6g07O6ip6Kt0XhO4jQSCXSlI6aAuS");
     }
 
     @Override
