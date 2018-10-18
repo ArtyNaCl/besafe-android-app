@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity
         notificationManager.notify(notificationId, mBuilder.build());
     }
 
-    
+
     //set notification channel for version <8.0.0
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
