@@ -52,19 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
-        tools:layout_editor_absoluteY="268dp"
-        tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/finish_alert_button"
-        android:layout_width="119dp"
-        android:layout_height="70dp"
-        android:text="Tout va bien"
-        tools:layout_editor_absoluteX="133dp"
-        tools:layout_editor_absoluteY="413dp"
-        tools:ignore="MissingConstraints" />
-=======
         app:layout_constraintTop_toBottomOf="@+id/divider2"
         app:layout_constraintVertical_bias="0.0"
         tools:text="X personnes viennent à votre secours !" />
@@ -81,6 +69,5 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
->>>>>>> e83878aec521a5a3757301fdc8d7aaa02b715394
 
 </android.support.constraint.ConstraintLayout>
