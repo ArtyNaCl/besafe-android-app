@@ -38,6 +38,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -379,10 +383,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        //mTextView.setText("Response is: "+ response.substring(0,500));
-                        //TODO START INTENT MAIN
-                        startIntent();
+                        Log.d("toto","");
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+
+                                String id = jsonObject.getString("id");
+                                String userId = jsonObject.getString("userId");
+                                startIntent(id,userId);
+
+
+                                Log.d("toto",id);
+                            } catch (JSONException e1) {
+                            e1.printStackTrace();
+                        }
+
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -407,9 +423,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         queue.add(stringRequest);
     }
 
-    public void startIntent(){
+    public void startIntent(String id, String userId){
 
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("id",id);
+        intent.putExtra("userId",userId);
         startActivity(intent);
     }
 }

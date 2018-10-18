@@ -207,4 +207,45 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    public void terminateAlert(String url){
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String trueUrl ="http://hdaroit.fr:3000{}/api/"+url;
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        //mTextView.setText("Response is: "+ response.substring(0,500));
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("That didn't work!","");
+            }
+        }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("name", "Alif");
+
+                return params;
+            }
+        };
+
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+
+    public void getUserId(){
+
+
+    }
+
 }
