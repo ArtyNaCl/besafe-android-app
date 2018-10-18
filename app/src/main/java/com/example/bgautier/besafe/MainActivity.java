@@ -39,13 +39,14 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String CHANNEL_ID = "channel_id";
-    Intent intent = getIntent();
+    Intent intent;
     GeolocListener geolocListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        intent = getIntent();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -294,7 +295,7 @@ public class MainActivity extends AppCompatActivity
                 Location location = geolocListener.getLastLoc();
 
                 if (location == null) {
-                    return null;
+                    return params;
                 }
 
                 try {
