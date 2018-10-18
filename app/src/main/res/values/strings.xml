@@ -21,4 +21,8 @@
     <string name="action_settings">Settings</string>
     <string name="alert">Button</string>
     <string name="channel_name">channel</string>
+    <string name="fini">FINI</string>
+    <string name="x_personnes_viennent_votre_secours">X personnes viennent à votre secours !</string>
+    <string name="alerte_envoy_e">Alerte envoyée !</string>
+    <string name="tout_va_bien">Tout va bien</string>
 </resources>
