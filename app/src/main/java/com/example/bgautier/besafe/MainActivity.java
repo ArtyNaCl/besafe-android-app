@@ -33,14 +33,18 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
+
+import io.socket.emitter.Emitter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String CHANNEL_ID = "channel_id";
     Intent intent;
     GeolocListener geolocListener;
+    SocketIO socketIO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,21 @@ public class MainActivity extends AppCompatActivity
         String userId = getUserId();
         String token = getToken();
         geolocListener = new GeolocListener(this, userId , token);
+        try {
+            try {
+                socketIO = new SocketIO("http://hdaroit.fr:3000", userId, token, new Emitter.Listener() {
+                    @Override
+                    public void call(Object... args) {
+                        System.out.println(args[0]);
+                        // onAlert();
+                    }
+                });
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
 
         Button alert_button = (Button) findViewById(R.id.alert_button);
         alert_button.setOnClickListener(new View.OnClickListener() {
@@ -328,5 +347,9 @@ public class MainActivity extends AppCompatActivity
 
         String token = intent.getStringExtra("id");
         return token;
+    }
+
+    private void onAlert() {
+
     }
 }

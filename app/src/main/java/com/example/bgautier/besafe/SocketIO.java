@@ -1,4 +1,9 @@
 package com.example.bgautier.besafe;
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.net.URISyntaxException;
 
 import io.socket.client.IO;
@@ -7,12 +12,13 @@ import io.socket.emitter.Emitter;
 
 public class SocketIO {
     private Socket socket;
+    private final String TAG = "SocketIO";
 
-    public SocketIO(String api, String token, Emitter.Listener onAlert) throws URISyntaxException {
+    public SocketIO(String api, String userId, String token, Emitter.Listener onAlert) throws URISyntaxException, JSONException {
         this.socket = IO.socket(api);
         this.listen(onAlert);
         this.socket.connect();
-        this.authenticate(token);
+        this.authenticate(token, userId);
     }
 
     public void disconnect() {
@@ -20,36 +26,39 @@ public class SocketIO {
         this.socket = null;
     }
 
-    private void authenticate(String token) {
-        this.socket.emit("authenticate", token);
+    private void authenticate(String token, String userId) throws JSONException {
+        JSONObject obj = new JSONObject();
+        obj.put("id", token);
+        obj.put("userId", userId);
+        this.socket.emit("authentication", obj);
     }
 
     private void listen(Emitter.Listener onAlert) {
         this.socket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                System.out.println("Socket.IO connected");
+               Log.d(TAG, "Socket.IO connected");
             }
         });
 
         this.socket.on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                System.out.println("Socket.IO disconnected");
+                Log.d(TAG, "Socket.IO disconnected : " + args[0]);
             }
         });
 
         this.socket.on(Socket.EVENT_ERROR, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                System.out.println("Socket.IO error");
+                Log.d(TAG,"Socket.IO error");
             }
         });
 
         this.socket.on(Socket.EVENT_MESSAGE, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                System.out.println("Socket.IO message : " + args[0]);
+                Log.d(TAG, "Socket.IO message : " + args[0]);
             }
         });
 
