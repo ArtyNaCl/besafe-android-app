@@ -80,8 +80,19 @@ public class MainActivity extends AppCompatActivity
                 socketIO = new SocketIO("http://hdaroit.fr:3000", userId, token, new Emitter.Listener() {
                     @Override
                     public void call(Object... args) {
-                        System.out.println(args[0]);
-                        // onAlert();
+                        Log.d("SocketIO", "Alert");
+                        JSONObject alert = (JSONObject) args[0];
+                        try {
+                            onAlert(
+                                alert.getString("responseId"),
+                                alert.getString("appUserId"),
+                                alert.getString("msg"),
+                                alert.getDouble("distance"),
+                                alert.getString("address")
+                            );
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
             } catch (JSONException e) {
@@ -349,7 +360,8 @@ public class MainActivity extends AppCompatActivity
         return token;
     }
 
-    private void onAlert() {
+    private void onAlert(String responseId, String appUserId, String msg, double distance, String address) {
+        sendNotification(msg);
 
     }
 }

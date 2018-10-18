@@ -37,31 +37,23 @@ public class SocketIO {
         this.socket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-               Log.d(TAG, "Socket.IO connected");
+               Log.d(TAG, "SocketIO connected");
             }
         });
 
         this.socket.on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                Log.d(TAG, "Socket.IO disconnected : " + args[0]);
+                Log.d(TAG, "SocketIO disconnected : " + args[0]);
             }
         });
 
         this.socket.on(Socket.EVENT_ERROR, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                Log.d(TAG,"Socket.IO error");
+                Log.d(TAG,"SocketIO error");
             }
         });
-
-        this.socket.on(Socket.EVENT_MESSAGE, new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                Log.d(TAG, "Socket.IO message : " + args[0]);
-            }
-        });
-
 
         this.socket.on("alert", onAlert);
     }
