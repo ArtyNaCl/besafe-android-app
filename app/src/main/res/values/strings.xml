@@ -25,9 +25,11 @@
     <string name="x_personnes_viennent_votre_secours">X personnes viennent à votre secours !</string>
     <string name="alerte_envoy_e">Alerte envoyée !</string>
     <string name="tout_va_bien">Tout va bien</string>
-    <string name="t_l_phone">Téléphone</string>
+
     <string name="telephone">telephone</string>
     <string name="mot_de_passe">Mot de passe</string>
     <string name="Telephone">Telephone</string>
     <string name="s_enregistrer">S\'enregistrer</string>
+
+    <string name="register">REGISTER</string>
 </resources>

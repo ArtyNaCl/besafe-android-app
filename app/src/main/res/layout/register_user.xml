@@ -15,7 +15,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
-        android:hint="@string/Telephone"
+        android:hint="Telephone"
         android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@+id/mdp_user"
         app:layout_constraintEnd_toEndOf="parent"
