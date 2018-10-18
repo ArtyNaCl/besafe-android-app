@@ -46,12 +46,12 @@
 
     <View
         android:id="@+id/divider3"
-        android:layout_width="368dp"
-        android:layout_height="1dp"
+        android:layout_width="400dp"
+        android:layout_height="2dp"
         android:background="?android:attr/listDivider"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="134dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="134dp" />
 
     <View
         android:id="@+id/divider4"
@@ -80,19 +80,19 @@
 
     <Button
         android:id="@+id/go_button"
-        android:layout_width="126dp"
-        android:layout_height="71dp"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
         android:text="J'y vais"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="411dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="411dp" />
 
     <Button
         android:id="@+id/nope_button"
-        android:layout_width="117dp"
-        android:layout_height="69dp"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
         android:text="nope"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="227dp"
-        tools:layout_editor_absoluteY="413dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="413dp" />
 </android.support.constraint.ConstraintLayout>
