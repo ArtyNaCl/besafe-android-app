@@ -29,6 +29,7 @@ public class GeolocListener {
     private Context activity;
     private String token;
     private String userId;
+    public Location lastLoc;
 
     public GeolocListener(Activity activity, String userId, String token) {
         LocationManager locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
@@ -64,6 +65,7 @@ public class GeolocListener {
             public void onLocationChanged(Location location) {
                 Log.d(TAG, "Latitude " + location.getLatitude() + ", longitude " + location.getLongitude());
                 callApiLocation(location);
+                lastLoc = location;
             }
         });
     }
@@ -110,6 +112,9 @@ public class GeolocListener {
         queue.add(stringRequest);
     }
 
+    public Location getLastLoc() {
+        return this.lastLoc;
+    }
 
 
 }
