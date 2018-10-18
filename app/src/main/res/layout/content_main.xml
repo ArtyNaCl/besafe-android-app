@@ -9,7 +9,7 @@
     tools:showIn="@layout/app_bar_main">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/alert_button"
         android:layout_width="217dp"
         android:layout_height="207dp"
         android:layout_marginStart="8dp"

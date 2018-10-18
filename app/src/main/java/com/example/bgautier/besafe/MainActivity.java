@@ -2,6 +2,8 @@ package com.example.bgautier.besafe;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +20,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,16 +30,23 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String CHANNEL_ID = "channel_id";
+    Intent intent = getIntent();
+    GeolocListener geolocListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -56,7 +67,17 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        new GeolocListener(this, "5bc8920345ce0c25bf335c5b", "A4VXwF5c8egUpYWUEskmNlHGutcWMvKZpMe6g07O6ip6Kt0XhO4jQSCXSlI6aAuS");
+        String userId = getUserId();
+        String token = getToken();
+        geolocListener = new GeolocListener(this, userId , token);
+
+        Button alert_button = (Button) findViewById(R.id.alert_button);
+        alert_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendAlert();
+            }
+        });
     }
 
     @Override
@@ -211,7 +232,7 @@ public class MainActivity extends AppCompatActivity
     public void terminateAlert(String url){
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String trueUrl ="http://hdaroit.fr:3000{}/api/"+url;
+        String trueUrl ="http://hdaroit.fr:3000/api/"+url;
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, url,
@@ -243,10 +264,68 @@ public class MainActivity extends AppCompatActivity
         queue.add(stringRequest);
     }
 
+    public void sendAlert( ){
 
-    public void getUserId(){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String trueUrl ="http://hdaroit.fr:3000/api/appusers/"+getUserId()+"/alerts?access_token="+getToken();
 
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, trueUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        //mTextView.setText("Response is: "+ response.substring(0,500));
+                        Log.d("toto",response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("That didn't work!","");
+            }
+        }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+
+                Map<String, String>  params = new HashMap<String, String>();
+                JSONObject loc = new JSONObject();
+                Location location = geolocListener.getLastLoc();
+
+                if (location == null) {
+                    return null;
+                }
+
+                try {
+                    loc.put("lat", location.getLatitude());
+                    loc.put("lng", location.getLongitude());
+                } catch (JSONException e) {
+                    Log.e("toto", e.toString());
+                    return params;
+                }
+
+                params.put("location", loc.toString());
+
+                return params;
+            }
+        };
+
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
 
     }
 
+    public String getUserId(){
+
+          String userId = intent.getStringExtra("userId");
+            return userId;
+    }
+
+    public String getToken(){
+
+        String token = intent.getStringExtra("id");
+        return token;
+    }
 }
