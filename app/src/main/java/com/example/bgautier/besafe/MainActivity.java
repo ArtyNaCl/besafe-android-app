@@ -12,6 +12,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,6 +49,16 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
+        final Button button = findViewById(R.id.btn1);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                callApi();
+            }
+        });
+
     }
 
     @Override
@@ -99,10 +118,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void callApi(String url){
-
+    public void callApi(){
+        final TextView mTextView = (TextView) findViewById(R.id.mTextView);
         RequestQueue queue = Volley.newRequestQueue(this);
-        String trueUrl ="http://hdaroit.fr:3000{}/api/"+url;
+        String url ="http://hdaroit.fr:3000";
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -110,7 +129,7 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
-                        mTextView.setText("Response is: "+ response.substring(0,500));
+                        mTextView.setText("Response is: "+ response);
                     }
                 }, new Response.ErrorListener() {
             @Override
