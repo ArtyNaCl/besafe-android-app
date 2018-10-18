@@ -17,7 +17,7 @@
         app:layout_constraintStart_toEndOf="@+id/distance_id"
         tools:layout_editor_absoluteY="201dp"
         tools:ignore="MissingConstraints" />
-//dkozehfiue
+
     <TextView
         android:id="@+id/titre_alert_notif"
         android:layout_width="252dp"
