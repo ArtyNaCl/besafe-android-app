@@ -6,18 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/divider5"
-        android:layout_width="76dp"
-        android:layout_height="3dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/distance_id"
-        tools:layout_editor_absoluteY="201dp"
-        tools:ignore="MissingConstraints" />
-
     <TextView
         android:id="@+id/titre_alert_notif"
         android:layout_width="252dp"
@@ -46,12 +34,17 @@
 
     <View
         android:id="@+id/divider3"
-        android:layout_width="400dp"
-        android:layout_height="2dp"
+        android:layout_width="385dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="?android:attr/listDivider"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="134dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.297"
+        tools:ignore="MissingConstraints" />
 
     <View
         android:id="@+id/divider4"
