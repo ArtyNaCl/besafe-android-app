@@ -45,7 +45,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="alert_responder.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="alert_responder.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/alert_responder.xml">
           <provider editor-type-id="text-editor">
             <state relative-caret-position="421">
@@ -53,6 +53,18 @@
             </state>
           </provider>
           <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="alert_notifiation.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/alert_notifiation.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
             <state />
           </provider>
         </entry>
@@ -2412,6 +2424,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/register_user.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/alert_responder.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/alert_notifiation.xml" />
       </list>
     </option>
   </component>
@@ -2638,7 +2651,7 @@
       <window_info id="Image Layers" order="6" />
       <window_info id="Build Variants" order="1" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" weight="0.32905984" />
       <window_info anchor="right" id="Preview" order="1" weight="0.3295302" />
       <window_info anchor="bottom" id="Run" order="8" />
       <window_info anchor="bottom" id="Version Control" order="3" />
@@ -2799,16 +2812,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/register_user.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="86" column="54" selection-start-line="86" selection-start-column="54" selection-end-line="86" selection-end-column="54" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -2855,6 +2858,26 @@
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/register_user.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="86" column="54" selection-start-line="86" selection-start-column="54" selection-end-line="86" selection-end-column="54" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/alert_notifiation.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
