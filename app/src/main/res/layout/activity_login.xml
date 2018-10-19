@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:width="20dp"
-                android:text="login"
+                android:text="Se connecter"
                 android:textStyle="bold" />
 
             <Button
@@ -80,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="register"
+                android:text="S'enregistrer"
                 android:textStyle="bold" />
 
         </LinearLayout>

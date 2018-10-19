@@ -10,15 +10,42 @@
 
     <Button
         android:id="@+id/alert_button"
-        android:layout_width="217dp"
-        android:layout_height="207dp"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/alert"
+        android:background="@drawable/roundedbutton"
+        android:padding="15dp"
+        android:text="J'AI BESOIN D'AIDE"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/divider6"
+        app:layout_constraintVertical_bias="0.502" />
+
+    <View
+        android:id="@+id/divider6"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.299" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="119dp"
+        android:src="@drawable/ic_action_name" />
+
 </android.support.constraint.ConstraintLayout>
