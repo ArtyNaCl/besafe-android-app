@@ -6,6 +6,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="401dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/androidicon48x48" />
+
+    </android.support.design.widget.AppBarLayout>
+
     <EditText
         android:id="@+id/phone_user"
         android:layout_width="300dp"
@@ -19,9 +42,10 @@
         android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@+id/mdp_user"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -40,7 +64,7 @@
         app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.175" />
+        app:layout_constraintVertical_bias="0.238" />
 
     <Button
         android:id="@+id/register_button"

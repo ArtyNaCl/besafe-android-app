@@ -7,25 +7,18 @@
     android:background = "#000"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.CoordinatorLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.design.widget.AppBarLayout
+        <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            app:srcCompat="@drawable/androidicon48x48" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/androidicon48x48" />
-
-        </android.support.design.widget.AppBarLayout>
-
-    </android.support.design.widget.CoordinatorLayout>
+    </android.support.design.widget.AppBarLayout>
 
     <TextView
         android:id="@+id/labelfor_alert"
