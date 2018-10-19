@@ -100,13 +100,13 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void call(Object... args) {
                         Log.d("SocketIO", "Missed alerts");
-                        sendNotification("Vous avez manqué " + String.valueOf((int) args[0]) + " alertes durant votre absence.", false);
+                        sendNotification("Vous avez manqué " + String.valueOf((int) args[0]) + " alertes durant votre absence.", false, null);
                     }
                 }, new Emitter.Listener() {
                     @Override
                     public void call(Object... args) {
                         Log.d("SocketIO", "New response.");
-                        sendNotification(String.valueOf((int) args[0]) + " personnes ont répondu à votre alerte.", false);
+                        sendNotification(String.valueOf((int) args[0]) + " personnes ont répondu à votre alerte.", false, null);
                         TextView et1 = findViewById(R.id.textView4);
                         et1.setText(String.valueOf((int) args[0])+ " personnes viennent à votre secours !");
 
@@ -185,10 +185,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void sendNotification(String textContent, boolean showIntent){
+    public void sendNotification(String textContent, boolean showIntent, Intent intent){
         PendingIntent resultPendingIntent = null;
         if (showIntent) {
-            Intent resultIntent = new Intent(this, AlertResponseActivity.class);
+            Intent resultIntent = intent;
 // Create the TaskStackBuilder and add the intent, which inflates the back stack
             TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
             stackBuilder.addNextIntentWithParentStack(resultIntent);
@@ -343,7 +343,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void onAlert(String responseId, String appUserId, String msg, double distance, String address) {
-        intent.putExtra("responseId", responseId);
-        sendNotification(msg, true);
+        Intent i = new Intent(this, AlertResponseActivity.class);
+        i.putExtra("responseId", responseId);
+        i.putExtra("userId", intent.getStringExtra("userId"));
+        i.putExtra("id", intent.getStringExtra("id"));
+        i.putExtra("distance", String.valueOf(distance));
+        i.putExtra("msg", msg);
+        i.putExtra("address", address);
+        sendNotification(msg, true, i);
     }
 }
