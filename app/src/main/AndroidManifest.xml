@@ -10,16 +10,14 @@
 
     <application
         android:allowBackup="true"
-        android:label=""
         android:icon="@drawable/androidicon48x48"
+        android:label=""
         android:roundIcon="@drawable/androidicon48x48"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
         android:name=".LoginActivity"
-        android:label=""
-            android:icon="@drawable/androidicon48x48"
-            android:roundIcon="@drawable/androidicon48x48">
+        android:label="">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -29,23 +27,17 @@
         <activity
             android:name=".MainActivity"
             android:label=""
-            android:theme="@style/AppTheme.NoActionBar"
-            android:icon="@drawable/androidicon48x48"
-            android:roundIcon="@drawable/androidicon48x48"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity
             android:name=".RegisterActivity"
             android:label=""
-            android:theme="@style/AppTheme.NoActionBar"
-            android:icon="@drawable/androidicon48x48"
-            android:roundIcon="@drawable/androidicon48x48"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity
             android:name=".AlertResponseActivity"
             android:label=""
-            android:theme="@style/AppTheme.NoActionBar"
-            android:icon="@drawable/androidicon48x48"
-            android:roundIcon="@drawable/androidicon48x48"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
 </application>
 </manifest>
