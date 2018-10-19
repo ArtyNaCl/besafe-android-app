@@ -27,12 +27,12 @@
         <activity
             android:name=".MainActivity"
             android:label=""
-            android:theme="@style/AppTheme.AppBarOverlay"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity
             android:name=".RegisterActivity"
             android:label=""
-            android:theme="@style/AppTheme.AppBarOverlay"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
 </application>
 </manifest>

@@ -26,17 +26,19 @@ public class AlertResponseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alert_notification);
+        Intent intent = getIntent();
         // Set up the login form.
 
-
+        final String userId = intent.getStringExtra("userId");
+        final String responseId = intent.getStringExtra("stringId");
+        final String token = intent.getStringExtra("id");
 
 
         Button go_button = (Button) findViewById(R.id.go_button);
         go_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                callApiGo(userId, responseId, token);
             }
         });
 
@@ -54,20 +56,18 @@ public class AlertResponseActivity extends AppCompatActivity {
 
     }
 
-    public void callApiGo( final String login , final String mdp ,final String prenom , final String nom){
+    public void callApiGo(String userId, String responseId, String accessToken){
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String trueUrl ="http://hdaroit.fr:3000/api/appusers";
+        String trueUrl ="http://hdaroit.fr:3000/api/appusers/" + userId + "/responses/" + responseId + "/resolve?access_token=" + accessToken;
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, trueUrl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("toto","");
-
+                        Log.d("ALERT go",response);
                         startIntent();
-
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -79,13 +79,7 @@ public class AlertResponseActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams()
             {
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("phone", login);
-                params.put("password", mdp);
-                params.put("firstname", prenom);
-                params.put("lastname", nom);
-
-                return params;
+                return new HashMap<String, String>();
             }
         };
 
