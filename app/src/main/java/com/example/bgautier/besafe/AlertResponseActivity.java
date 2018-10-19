@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,12 +33,18 @@ public class AlertResponseActivity extends AppCompatActivity {
         final String userId = intent.getStringExtra("userId");
         final String responseId = intent.getStringExtra("responseId");
         final String token = intent.getStringExtra("id");
-        /*
         final double distance = Double.parseDouble(intent.getStringExtra("distance"));
         final String msg = intent.getStringExtra("msg");
         final String address = intent.getStringExtra("address");
-        */
 
+        TextView d = findViewById(R.id.distance_id);
+        d.setText(distance + " mètres");
+
+        TextView ad = findViewById(R.id.address_text);
+        ad.setText(address);
+
+        TextView t = findViewById(R.id.titre_alert_notif);
+        t.setText(msg);
 
         Button go_button = (Button) findViewById(R.id.go_button);
         go_button.setOnClickListener(new View.OnClickListener() {
