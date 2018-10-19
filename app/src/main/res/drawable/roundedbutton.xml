@@ -6,7 +6,7 @@
             <solid android:color="#E43F6F" />
             <stroke
                 android:width="2dip"
-                android:color="#2A0A0A" />
+                android:color="#FFF" />
             <padding
                 android:bottom="4dp"
                 android:left="4dp"
@@ -20,7 +20,7 @@
             <solid android:color="#E43F6F" />
             <stroke
                 android:width="2dip"
-                android:color="#2A0A0A" />
+                android:color="#FFF" />
             <padding
                 android:bottom="4dp"
                 android:left="4dp"
