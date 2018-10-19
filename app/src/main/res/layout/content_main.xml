@@ -44,8 +44,10 @@
         app:layout_constraintVertical_bias="0.299" />
 
     <ImageView
+        android:id="@+id/logo"
         android:layout_width="fill_parent"
         android:layout_height="119dp"
-        android:src="@drawable/ic_action_name" />
+        android:src="@drawable/msicon310x310"
+        app:srcCompat="@drawable/msicon310x310" />
 
 </android.support.constraint.ConstraintLayout>
