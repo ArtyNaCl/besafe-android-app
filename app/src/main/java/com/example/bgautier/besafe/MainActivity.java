@@ -84,15 +84,27 @@ public class MainActivity extends AppCompatActivity
                         JSONObject alert = (JSONObject) args[0];
                         try {
                             onAlert(
-                                alert.getString("responseId"),
-                                alert.getString("appUserId"),
-                                alert.getString("msg"),
-                                alert.getDouble("distance"),
-                                alert.getString("address")
+                                    alert.getString("responseId"),
+                                    alert.getString("appUserId"),
+                                    alert.getString("msg"),
+                                    alert.getDouble("distance"),
+                                    alert.getString("address")
                             );
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                    }
+                }, new Emitter.Listener() {
+                    @Override
+                    public void call(Object... args) {
+                        Log.d("SocketIO", "Missed alerts");
+                        sendNotification("Vous avez manqué " + String.valueOf((int) args[0]) + " alertes durant votre absence.");
+                    }
+                }, new Emitter.Listener() {
+                    @Override
+                    public void call(Object... args) {
+                        Log.d("SocketIO", "New response.");
+                        sendNotification(String.valueOf((int) args[0]) + " personnes ont répondu à votre alerte.");
                     }
                 });
             } catch (JSONException e) {

@@ -14,9 +14,9 @@ public class SocketIO {
     private Socket socket;
     private final String TAG = "SocketIO";
 
-    public SocketIO(String api, String userId, String token, Emitter.Listener onAlert) throws URISyntaxException, JSONException {
+    public SocketIO(String api, String userId, String token, Emitter.Listener onAlert, Emitter.Listener onMissedAlerts, Emitter.Listener onResponse) throws URISyntaxException, JSONException {
         this.socket = IO.socket(api);
-        this.listen(onAlert);
+        this.listen(onAlert, onMissedAlerts, onResponse);
         this.socket.connect();
         this.authenticate(token, userId);
     }
@@ -33,7 +33,7 @@ public class SocketIO {
         this.socket.emit("authentication", obj);
     }
 
-    private void listen(Emitter.Listener onAlert) {
+    private void listen(Emitter.Listener onAlert, Emitter.Listener onMissedAlerts, Emitter.Listener onResponse) {
         this.socket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
@@ -56,5 +56,7 @@ public class SocketIO {
         });
 
         this.socket.on("alert", onAlert);
+        this.socket.on("missed-alerts", onMissedAlerts);
+        this.socket.on("new-response", onResponse);
     }
 }
