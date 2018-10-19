@@ -110,6 +110,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        Button btn_register = (Button) findViewById(R.id.btn_register);
+        btn_register.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startIntent2();
+            }
+        });
+
+
+
+
+
+
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
@@ -423,6 +437,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         queue.add(stringRequest);
     }
 
+
+
+
     public void startIntent(String id, String userId){
 
         Intent intent = new Intent(this, MainActivity.class);
@@ -430,5 +447,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         intent.putExtra("userId",userId);
         startActivity(intent);
     }
+
+    public void startIntent2(){
+
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
 }
+
 

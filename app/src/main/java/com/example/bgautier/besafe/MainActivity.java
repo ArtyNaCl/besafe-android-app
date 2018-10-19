@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity
                     public void call(Object... args) {
                         Log.d("SocketIO", "New response.");
                         sendNotification(String.valueOf((int) args[0]) + " personnes ont répondu à votre alerte.");
+
                     }
                 });
             } catch (JSONException e) {
@@ -243,6 +244,7 @@ public class MainActivity extends AppCompatActivity
 
 
     public void sendNotification(String textContent){
+
         int  notificationId = 2;
         // set notification
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
@@ -254,6 +256,8 @@ public class MainActivity extends AppCompatActivity
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         // notificationId is a unique int for each notification that you must define
         notificationManager.notify(notificationId, mBuilder.build());
+
+
     }
 
 
@@ -357,7 +361,7 @@ public class MainActivity extends AppCompatActivity
 
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
-
+        setContentView(R.layout.alert_responder);
     }
 
     public String getUserId(){

@@ -8,13 +8,13 @@
 
     <TextView
         android:id="@+id/labelfor_alert"
-        android:layout_width="162dp"
+        android:layout_width="193dp"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/alerte_envoy_e"
+        android:text="l'alert a été envoyé"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/divider2"
