@@ -308,6 +308,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 terminateAlert();
+                setContentView(R.layout.content_main);
             }
         });
     }
