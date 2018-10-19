@@ -30,7 +30,7 @@ public class AlertResponseActivity extends AppCompatActivity {
         // Set up the login form.
 
         final String userId = intent.getStringExtra("userId");
-        final String responseId = intent.getStringExtra("stringId");
+        final String responseId = intent.getStringExtra("responseId");
         final String token = intent.getStringExtra("id");
 
 

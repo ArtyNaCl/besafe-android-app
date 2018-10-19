@@ -343,7 +343,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void onAlert(String responseId, String appUserId, String msg, double distance, String address) {
+        intent.putExtra("responseId", responseId);
         sendNotification(msg, true);
-
     }
 }
