@@ -2,6 +2,8 @@ package com.example.bgautier.besafe;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Build;
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         intent = getIntent();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -184,16 +187,26 @@ public class MainActivity extends AppCompatActivity
 
     public void sendNotification(String textContent){
 
+        Intent resultIntent = new Intent(this, AlertResponseActivity.class);
+// Create the TaskStackBuilder and add the intent, which inflates the back stack
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addNextIntentWithParentStack(resultIntent);
+// Get the PendingIntent containing the entire back stack
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
         int  notificationId = 2;
         // set notification
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Alert de proximité")
                 .setContentText(textContent)
+                .setUsesChronometer(true)
                 .setPriority(NotificationCompat.PRIORITY_MAX);
+
         createNotificationChannel();
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        // notificationId is a unique int for each notification that you must define
+        mBuilder.setContentIntent(resultPendingIntent);
         notificationManager.notify(notificationId, mBuilder.build());
 
 
