@@ -22,15 +22,6 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" >
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="71dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/androidicon48x48"
-            android:scaleType="center"
-            android:visibility="visible"
-            app:srcCompat="@drawable/androidicon48x48"
-            tools:srcCompat="@drawable/androidicon48x48" />
     </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>
