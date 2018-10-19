@@ -33,7 +33,7 @@ public class AlertResponseActivity extends AppCompatActivity {
         final String userId = intent.getStringExtra("userId");
         final String responseId = intent.getStringExtra("responseId");
         final String token = intent.getStringExtra("id");
-        final double distance = Double.parseDouble(intent.getStringExtra("distance"));
+        final String distance = intent.getStringExtra("distance");
         final String msg = intent.getStringExtra("msg");
         final String address = intent.getStringExtra("address");
 
@@ -59,8 +59,7 @@ public class AlertResponseActivity extends AppCompatActivity {
         nope_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                startIntent();
             }
         });
 
