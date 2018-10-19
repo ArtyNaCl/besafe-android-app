@@ -33,12 +33,12 @@ public class AlertResponseActivity extends AppCompatActivity {
         final String userId = intent.getStringExtra("userId");
         final String responseId = intent.getStringExtra("responseId");
         final String token = intent.getStringExtra("id");
-        final String distance = intent.getStringExtra("distance");
+        final String distance = intent.getStringExtra("distance") + " mètres";
         final String msg = intent.getStringExtra("msg");
         final String address = intent.getStringExtra("address");
 
         TextView d = findViewById(R.id.distance_id);
-        d.setText(distance + " mètres");
+        d.setText(distance);
 
         TextView ad = findViewById(R.id.address_text);
         ad.setText(address);
