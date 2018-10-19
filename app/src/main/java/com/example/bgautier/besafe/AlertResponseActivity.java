@@ -32,6 +32,11 @@ public class AlertResponseActivity extends AppCompatActivity {
         final String userId = intent.getStringExtra("userId");
         final String responseId = intent.getStringExtra("responseId");
         final String token = intent.getStringExtra("id");
+        /*
+        final double distance = Double.parseDouble(intent.getStringExtra("distance"));
+        final String msg = intent.getStringExtra("msg");
+        final String address = intent.getStringExtra("address");
+        */
 
 
         Button go_button = (Button) findViewById(R.id.go_button);
@@ -91,7 +96,10 @@ public class AlertResponseActivity extends AppCompatActivity {
 
     public void startIntent( ){
         Log.d("toto","");
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent i = getIntent();
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("userId", i.getStringExtra("userId"));
+        intent.putExtra("id", i.getStringExtra("id"));
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivityIfNeeded(intent,0);
     }
