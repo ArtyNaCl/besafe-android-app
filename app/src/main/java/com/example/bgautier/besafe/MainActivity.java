@@ -100,13 +100,13 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void call(Object... args) {
                         Log.d("SocketIO", "Missed alerts");
-                        sendNotification("Vous avez manqué " + String.valueOf((int) args[0]) + " alertes durant votre absence.");
+                        sendNotification("Vous avez manqué " + String.valueOf((int) args[0]) + " alertes durant votre absence.", false);
                     }
                 }, new Emitter.Listener() {
                     @Override
                     public void call(Object... args) {
                         Log.d("SocketIO", "New response.");
-                        sendNotification(String.valueOf((int) args[0]) + " personnes ont répondu à votre alerte.");
+                        sendNotification(String.valueOf((int) args[0]) + " personnes ont répondu à votre alerte.", false);
                         TextView et1 = findViewById(R.id.textView4);
                         et1.setText(String.valueOf((int) args[0])+ " personnes viennent à votre secours !");
 
@@ -185,15 +185,17 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void sendNotification(String textContent){
-
-        Intent resultIntent = new Intent(this, AlertResponseActivity.class);
+    public void sendNotification(String textContent, boolean showIntent){
+        PendingIntent resultPendingIntent = null;
+        if (showIntent) {
+            Intent resultIntent = new Intent(this, AlertResponseActivity.class);
 // Create the TaskStackBuilder and add the intent, which inflates the back stack
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addNextIntentWithParentStack(resultIntent);
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+            stackBuilder.addNextIntentWithParentStack(resultIntent);
 // Get the PendingIntent containing the entire back stack
-        PendingIntent resultPendingIntent =
-                stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+            resultPendingIntent =
+                    stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        }
 
         int  notificationId = 2;
         // set notification
@@ -206,7 +208,9 @@ public class MainActivity extends AppCompatActivity
 
         createNotificationChannel();
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        mBuilder.setContentIntent(resultPendingIntent);
+        if (resultPendingIntent != null) {
+            mBuilder.setContentIntent(resultPendingIntent);
+        }
         notificationManager.notify(notificationId, mBuilder.build());
 
 
@@ -339,7 +343,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void onAlert(String responseId, String appUserId, String msg, double distance, String address) {
-        sendNotification(msg);
+        sendNotification(msg, true);
 
     }
 }
