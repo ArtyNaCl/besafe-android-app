@@ -22,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity
     Intent intent;
     GeolocListener geolocListener;
     SocketIO socketIO;
+    String alertId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +107,8 @@ public class MainActivity extends AppCompatActivity
                     public void call(Object... args) {
                         Log.d("SocketIO", "New response.");
                         sendNotification(String.valueOf((int) args[0]) + " personnes ont répondu à votre alerte.");
+                        TextView et1 = findViewById(R.id.textView4);
+                        et1.setText(String.valueOf((int) args[0])+ " personnes viennent à votre secours !");
 
                     }
                 });
@@ -181,68 +185,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void callApi(String url) {
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String trueUrl = "http://hdaroit.fr:3000{}/api/" + url;
-
-        // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        //mTextView.setText("Response is: "+ response.substring(0,500));
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("That didn't work!", "");
-            }
-        });
-        // Add the request to the RequestQueue.
-        queue.add(stringRequest);
-    }
-
-
-
-    public void callApiPost(String url){
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String trueUrl ="http://hdaroit.fr:3000{}/api/"+url;
-
-        // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        //mTextView.setText("Response is: "+ response.substring(0,500));
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("That didn't work!","");
-            }
-        }
-        ) {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("name", "Alif");
-                params.put("domain", "http://itsalif.info");
-
-                return params;
-            }
-        };
-
-
-// Add the request to the RequestQueue.
-        queue.add(stringRequest);
-    }
-
-
     public void sendNotification(String textContent){
 
         int  notificationId = 2;
@@ -276,32 +218,28 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void terminateAlert(String url){
-
+    public void terminateAlert(){
         RequestQueue queue = Volley.newRequestQueue(this);
-        String trueUrl ="http://hdaroit.fr:3000/api/"+url;
+        String url = "http://hdaroit.fr:3000/api/appusers/" + getUserId() + "/alerts/" + alertId + "?access_token=" + getToken();
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        //mTextView.setText("Response is: "+ response.substring(0,500));
+                        Log.d("ALERT", "Alert resolved : " + response);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("That didn't work!","");
+                Log.d("ALERT", error.toString());
             }
         }
         ) {
             @Override
-            protected Map<String, String> getParams()
-            {
+            protected Map<String, String> getParams() {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("name", "Alif");
-
+                params.put("resolved", String.valueOf(true));
                 return params;
             }
         };
@@ -323,12 +261,18 @@ public class MainActivity extends AppCompatActivity
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         //mTextView.setText("Response is: "+ response.substring(0,500));
-                        Log.d("toto",response);
+                        Log.d("ALERT", "Created : " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            alertId = jsonObject.getString("id");
+                        } catch (JSONException e1) {
+                            e1.printStackTrace();
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("That didn't work!","");
+                Log.d("ALERT",error.toString());
             }
         }
         ) {
@@ -362,6 +306,13 @@ public class MainActivity extends AppCompatActivity
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
         setContentView(R.layout.alert_responder);
+        Button alert_resolve = (Button) findViewById(R.id.finish_alert_button);
+        alert_resolve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                terminateAlert();
+            }
+        });
     }
 
     public String getUserId(){
